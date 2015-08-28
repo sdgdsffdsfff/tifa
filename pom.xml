@@ -156,7 +156,7 @@
         <dependency>
             <groupId>walker</groupId>
             <artifactId>mybatis-paginator</artifactId>
-            <version>1.0</version>
+            <version>20150827</version>
         </dependency>
 
         <!-- web模块 相关 -->

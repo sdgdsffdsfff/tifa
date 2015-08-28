@@ -3,9 +3,9 @@
 <jobs>
     <job desc="HelloÊ¾Àý"
          className="walker.basewf.demo.jobs.HelloJob"
-         cronExpression="2/2 * * * * ?"/>
+         cronExpression="2/10 * * * * ?"/>
 
     <job desc="MeiziÊ¾Àý"
          className="walker.basewf.demo.jobs.MeiziJob"
-         cronExpression="2/1 * * * * ?"/>
+         cronExpression="2/20 * * * * ?"/>
 </jobs>

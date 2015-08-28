@@ -58,8 +58,8 @@
 
     <!-- 分页查询拦截器 -->
     <plugins>
-        <plugin interceptor="com.github.walker.mybatis.paginator.OffsetLimitInterceptor">
-            <property name="dialectClass" value="com.github.walker.mybatis.paginator.dialect.MySQLDialect"/>
+        <plugin interceptor="walker.mybatis.paginator.OffsetLimitInterceptor">
+            <property name="dialectClass" value="walker.mybatis.paginator.dialect.MySQLDialect"/>
         </plugin>
     </plugins>
 

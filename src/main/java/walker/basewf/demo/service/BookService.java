@@ -2,9 +2,9 @@ package walker.basewf.demo.service;
 
 import java.util.*;
 
-import com.github.walker.mybatis.paginator.Order;
-import com.github.walker.mybatis.paginator.PageBounds;
-import com.github.walker.mybatis.paginator.PageList;
+import walker.mybatis.paginator.Order;
+import walker.mybatis.paginator.PageBounds;
+import walker.mybatis.paginator.PageList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

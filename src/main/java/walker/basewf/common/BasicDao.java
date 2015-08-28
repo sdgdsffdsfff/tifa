@@ -1,6 +1,6 @@
 package walker.basewf.common;
 
-import com.github.walker.mybatis.paginator.PageBounds;
+import walker.mybatis.paginator.PageBounds;
 
 import java.util.List;
 import java.util.Map;
