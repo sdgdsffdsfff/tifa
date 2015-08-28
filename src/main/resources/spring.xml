@@ -78,7 +78,7 @@
 
         <!-- 载入mybatis配置文件 -->
         <property name="configLocation" value="classpath:mybatis.xml"/>
-        <property name="mapperLocations" value="classpath*:walker/basewf/dao/*.xml"/>
+        <property name="mapperLocations" value="classpath*:walker/basewf/demo/dao/*.xml"/>
     </bean>
 
     <!-- 扫描并加载 basePackage下的DAO/Mapper接口 -->
