@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="walker.basewf.dao.BookDao">
+
+    <!-- ============================= INSERT ============================= -->
+    <insert id="save">
+        INSERT INTO book( book_id,title,cost,publish_time,blob_content,text_content,update_time )
+        VALUES ( #{bookId},#{title},#{cost},#{publishTime},#{blobContent},#{textContent},#{updateTime})
+    </insert>
+
+    <insert id="saveBatch">
+        INSERT INTO book( book_id,title,cost,publish_time,blob_content,text_content,update_time )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            ( #{item.bookId},#{item.title},#{item.cost},#{item.publishTime},#{item.blobContent},#{item.textContent},#{item.updateTime} )
+        </foreach>
+    </insert>
+
+
+    <!-- ============================= UPDATE ============================= -->
+    <update id="update">
+        UPDATE book
+        <set>
+            title=#{title},
+            cost=#{cost},
+            publish_time=#{publishTime},
+            blob_content=#{blobContent},
+            text_content=#{textContent},
+            update_time=#{updateTime},
+        </set>
+        WHERE book_id=#{bookId}
+    </update>
+
+    <update id="updateIgnoreNull">
+        UPDATE book
+        <set>
+            <if test="title!= null">title=#{title},</if>
+            <if test="cost!= null">cost=#{cost},</if>
+            <if test="publishTime!= null">publish_time=#{publishTime},</if>
+            <if test="blobContent!= null">blob_content=#{blobContent},</if>
+            <if test="textContent!= null">text_content=#{textContent},</if>
+            <if test="updateTime!= null">update_time=#{updateTime},</if>
+        </set>
+        WHERE book_id=#{bookId}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index"  separator=";">
+            UPDATE book
+            <set>
+                title=#{item.title},
+                cost=#{item.cost},
+                publish_time=#{item.publishTime},
+                blob_content=#{item.blobContent},
+                text_content=#{item.textContent},
+                update_time=#{item.updateTime},
+            </set>
+            WHERE book_id=#{item.bookId}
+        </foreach>
+    </update>
+
+
+    <!-- ============================= DELETE ============================= -->
+    <delete id="delete">
+        DELETE FROM book
+        WHERE book_id=#{bookId}
+    </delete>
+
+    <delete id="deleteBatch">
+        DELETE FROM book
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            (book_id=#{item.bookId} )
+        </foreach>
+    </delete>
+
+    <delete id="deleteByPK">
+        DELETE FROM book
+        WHERE book_id=#{bookId}
+    </delete>
+
+
+    <delete id="deleteByPks">
+        DELETE FROM book
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            b.id=#{item}
+        </foreach>
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE FROM book
+    </delete>
+
+
+    <!-- ============================= SELECT ============================= -->
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(1) FROM book
+    </select>
+
+    <select id="findByPK" resultType="Book">
+        SELECT * FROM book
+        WHERE book_id=#{bookId}
+    </select>
+
+    <select id="find" resultType="Book">
+        SELECT book_id,title,cost,publish_time,blob_content,text_content,update_time
+         FROM book
+        <where>
+            <if test="bookId!= null">
+               AND book_id = #{bookId}
+            </if>
+            <if test="title!= null">
+               AND title like #{title}
+            </if>
+            <if test="minCost!= null">
+               AND cost >= #{minCost}
+            </if>
+            <if test="maxCost!= null">
+                <![CDATA[  AND cost < #{maxCost}  ]]>
+            </if>
+            <if test="publishTime!= null">
+               AND publish_time = #{publishTime}
+            </if>
+            <if test="blobContent!= null">
+               AND blob_content = #{blobContent}
+            </if>
+            <if test="textContent!= null">
+               AND text_content = #{textContent}
+            </if>
+            <if test="updateTime!= null">
+               AND update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="findBookTitles" resultType="java.lang.String">
+        SELECT title
+        FROM book
+        LIMIT 20
+    </select>
+
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<jobs>
+    <job desc="Hello示例"
+         className="walker.basewf.common.jobcenter.jobs.HelloJob"
+         cronExpression="2/2 * * * * ?"/>
+
+    <job desc="Meizi示例"
+         className="walker.basewf.common.jobcenter.jobs.MeiziJob"
+         cronExpression="2/1 * * * * ?"/>
+</jobs>

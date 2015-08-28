@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation=
+               "http://www.springframework.org/schema/beans
+ 			      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    				http://www.springframework.org/schema/context 
+    	 			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="mappings" class="walker.basewf.common.support.PropertyHolder">
+        <property name="locations">
+            <list>
+                <value>classpath:config.properties</value>
+                <!--<value>file:/app/deploy/task-center/config.properties</value>-->
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="maxActive" value="20"/>
+        <property name="maxIdle" value="10"/>
+        <property name="maxWait" value="5"/>
+        <property name="defaultAutoCommit" value="false"/>
+    </bean>
+
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 定义注解驱动的事务 -->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <!-- 定义拦截器方式的事务
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED"
+             rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="method*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="*" propagation="SUPPORTS"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="txPointcut" expression="execution(* walker.basewf.service.*.*(..))"/>
+        <aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+    </aop:config>
+-->
+
+
+    <!-- 加载注解有@Service @Controller等注解的类 -->
+    <context:component-scan base-package="walker.basewf.service"/>
+
+    <!-- 定义在加载某个Bean前后调用的逻辑-->
+    <bean id="refBeanPostProcessor" class="walker.basewf.common.support.RefBeanPostProcessor"/>
+
+    <!-- 获取Spring Context用于自定义动态注册bean和获取bean -->
+    <bean class="walker.basewf.common.support.ContextHolder"></bean>
+    <!--<bean class="com.mucfc.act.batch.common.support.ContextHolder"></bean>-->
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <!-- 载入mybatis配置文件 -->
+        <property name="configLocation" value="classpath:mybatis.xml"/>
+        <property name="mapperLocations" value="classpath*:walker/basewf/dao/*.xml"/>
+    </bean>
+
+    <!-- 扫描并加载 basePackage下的DAO/Mapper接口 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="walker.basewf.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+</beans>
