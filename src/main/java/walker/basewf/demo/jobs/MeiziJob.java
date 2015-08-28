@@ -1,7 +1,7 @@
-package walker.basewf.common.jobcenter.jobs;
+package walker.basewf.demo.jobs;
 
 import java.util.Date;
-import walker.basewf.common.jobcenter.BasicJob;
+import walker.basewf.tifa.BasicJob;
 
 
 

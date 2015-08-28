@@ -1,11 +1,11 @@
-package walker.basewf.common.jobcenter;
+package walker.basewf.tifa;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import walker.basewf.common.jobcenter.jobs.HelloJob;
+import walker.basewf.demo.jobs.HelloJob;
 
 /**
  * Created by HuQingmiao on 2015-8-13.

@@ -1,4 +1,4 @@
-package walker.basewf.vo;
+package walker.basewf.demo.vo;
 
 
 import walker.basewf.common.BasicVo;

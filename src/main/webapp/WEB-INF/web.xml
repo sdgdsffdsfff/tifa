@@ -50,7 +50,7 @@
 
 
     <listener>
-        <listener-class>walker.basewf.common.jobcenter.JobListener</listener-class>
+        <listener-class>walker.basewf.tifa.JobListener</listener-class>
     </listener>
 
     <!-- springmvc servlet-->

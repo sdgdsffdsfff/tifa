@@ -1,4 +1,4 @@
-package walker.basewf.common.jobcenter;
+package walker.basewf.tifa;
 
 import org.quartz.Job;
 import org.quartz.JobDetail;

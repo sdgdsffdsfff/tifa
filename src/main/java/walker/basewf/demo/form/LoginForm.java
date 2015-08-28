@@ -1,4 +1,4 @@
-package walker.basewf.form;
+package walker.basewf.demo.form;
 
 /**
  * Created by HuQingmiao on 2015/3/4 0004.

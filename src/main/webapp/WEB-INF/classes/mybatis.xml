@@ -51,7 +51,7 @@
 
 
     <typeAliases>
-        <package name="walker.basewf.vo"/>
+        <package name="walker.basewf.demo.vo"/>
         <!-- 为此包下的所有类自动定义别名-->
     </typeAliases>
 

@@ -1,12 +1,12 @@
-package walker.basewf.control;
+package walker.basewf.demo.control;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import walker.basewf.common.BasicController;
-import walker.basewf.form.LoginForm;
-import walker.basewf.service.BookService;
+import walker.basewf.demo.form.LoginForm;
+import walker.basewf.demo.service.BookService;
 
 import java.util.Map;
 

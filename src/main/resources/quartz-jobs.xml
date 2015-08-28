@@ -2,10 +2,10 @@
 
 <jobs>
     <job desc="HelloÊ¾Àý"
-         className="walker.basewf.common.jobcenter.jobs.HelloJob"
+         className="walker.basewf.demo.jobs.HelloJob"
          cronExpression="2/2 * * * * ?"/>
 
     <job desc="MeiziÊ¾Àý"
-         className="walker.basewf.common.jobcenter.jobs.MeiziJob"
+         className="walker.basewf.demo.jobs.MeiziJob"
          cronExpression="2/1 * * * * ?"/>
 </jobs>

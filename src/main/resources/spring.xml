@@ -56,14 +56,14 @@
     </tx:advice>
 
     <aop:config>
-        <aop:pointcut id="txPointcut" expression="execution(* walker.basewf.service.*.*(..))"/>
+        <aop:pointcut id="txPointcut" expression="execution(* walker.basewf.demo.service.*.*(..))"/>
         <aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
     </aop:config>
 -->
 
 
     <!-- 加载注解有@Service @Controller等注解的类 -->
-    <context:component-scan base-package="walker.basewf.service"/>
+    <context:component-scan base-package="walker.basewf.demo.service"/>
 
     <!-- 定义在加载某个Bean前后调用的逻辑-->
     <bean id="refBeanPostProcessor" class="walker.basewf.common.support.RefBeanPostProcessor"/>
@@ -83,7 +83,7 @@
 
     <!-- 扫描并加载 basePackage下的DAO/Mapper接口 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="walker.basewf.dao"/>
+        <property name="basePackage" value="walker.basewf.demo.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 </beans>

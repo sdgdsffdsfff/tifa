@@ -1,4 +1,4 @@
-package walker.basewf.service;
+package walker.basewf.demo.service;
 
 import java.util.*;
 
@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import walker.basewf.common.utils.DateTimeUtil;
-import walker.basewf.dao.BookDao;
-import walker.basewf.vo.Book;
+import walker.basewf.demo.dao.BookDao;
+import walker.basewf.demo.vo.Book;
 
 
 

@@ -1,4 +1,4 @@
-package walker.basewf.dao;
+package walker.basewf.demo.dao;
 
 
 import walker.basewf.common.BasicDao;

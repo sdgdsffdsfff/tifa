@@ -1,4 +1,4 @@
-package walker.basewf.common.jobcenter.jobs;
+package walker.basewf.demo.jobs;
 
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
